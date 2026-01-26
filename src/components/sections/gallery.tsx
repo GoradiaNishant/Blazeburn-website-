@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-const galleryImageIds = ['gallery-1', 'gallery-2', 'gallery-3', 'gallery-4', 'gallery-5', 'gallery-6'];
+const galleryImageId = 'gallery-1';
 
 export function GallerySection() {
-  const galleryImages = galleryImageIds.map(id => PlaceHolderImages.find(p => p.id === id)).filter(Boolean);
+  const image = PlaceHolderImages.find(p => p.id === galleryImageId);
+
+  if (!image) return null;
 
   return (
     <section id="gallery" className="py-20 md:py-32 bg-background">
@@ -15,26 +17,17 @@ export function GallerySection() {
             A warm and inviting space for every occasion.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryImages.map((image, index) => image && (
-            <div
-              key={image.id}
-              className={`group relative overflow-hidden rounded-lg shadow-lg
-                ${index === 0 ? 'col-span-2 row-span-2' : ''}
-                ${index === 3 || index === 4 ? 'col-span-2' : ''}
-              `}
-            >
-              <Image
-                src={image.imageUrl}
-                alt={image.description}
-                width={800}
-                height={600}
-                className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-                data-ai-hint={image.imageHint}
-              />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          ))}
+        <div className="flex justify-center">
+          <div className="group relative overflow-hidden rounded-lg shadow-lg w-full max-w-4xl aspect-[4/3]">
+            <Image
+              src={image.imageUrl}
+              alt={image.description}
+              fill
+              className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+              data-ai-hint={image.imageHint}
+            />
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
         </div>
       </div>
     </section>
