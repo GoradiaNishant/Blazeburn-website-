@@ -4,15 +4,15 @@ export const BlazeburnIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 100 100" fill="currentColor" {...props}>
     <text
       x="50%"
-      y="55%"
+      y="60%"
       dominantBaseline="central"
       textAnchor="middle"
       fontFamily="'Playfair Display', serif"
-      fontSize="90"
+      fontSize="85"
       fontWeight="bold"
     >
-      <tspan dx="-0.2em">B</tspan>
-      <tspan dx="-0.35em" dy="0.1em">B</tspan>
+      <tspan dx="-0.22em">b</tspan>
+      <tspan dx="-0.42em" dy="0.05em">b</tspan>
     </text>
   </svg>
 );
