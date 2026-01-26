@@ -53,7 +53,7 @@ export function ContactSection() {
               <ul className="space-y-3 text-lg text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <span>G602, Sukan Heights, Vastral, Ahmedabad, Gujarat, India, 382418</span>
+                  <span>Coming Soon in Ahmedabad</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-6 w-6 text-primary flex-shrink-0" />
@@ -74,7 +74,7 @@ export function ContactSection() {
             </div>
             <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
               <iframe
-                src="https://maps.google.com/maps?q=G602%2C%20Sukan%20Heights%2C%20Vastral%2C%20Ahmedabad%2C%20Gujarat%2C%20India%2C%20382418&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Ahmedabad&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
