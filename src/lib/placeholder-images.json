@@ -1,3 +1,88 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-image",
+      "description": "A bustling restaurant interior with warm lighting.",
+      "imageUrl": "https://images.unsplash.com/photo-1613274554329-70f997f5789f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyZXN0YXVyYW50JTIwaW50ZXJpb3J8ZW58MHx8fHwxNzY5NDAzNjgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "restaurant interior"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Elegant restaurant dining area with set tables.",
+      "imageUrl": "https://images.unsplash.com/photo-1667388968964-4aa652df0a9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZXN0YXVyYW50JTIwZGluaW5nfGVufDB8fHx8MTc2OTQwMzY4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "restaurant dining"
+    },
+    {
+      "id": "gallery-2",
+      "description": "A close-up of a chef plating a dish.",
+      "imageUrl": "https://images.unsplash.com/photo-1675092975393-7b7cd0c618fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjaGVmJTIwcGxhdGluZ3xlbnwwfHx8fDE3Njk0MDM2ODJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chef plating"
+    },
+    {
+      "id": "gallery-3",
+      "description": "The exterior of a modern restaurant at dusk.",
+      "imageUrl": "https://images.unsplash.com/photo-1710846929339-72634edf6f5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzY5MzE0MDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "restaurant exterior"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Cozy corner booth in a restaurant.",
+      "imageUrl": "https://images.unsplash.com/photo-1767451574075-0172495f2935?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyZXN0YXVyYW50JTIwYm9vdGh8ZW58MHx8fHwxNzY5NDAzNjgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "restaurant booth"
+    },
+    {
+      "id": "gallery-5",
+      "description": "A bartender crafting a cocktail.",
+      "imageUrl": "https://images.unsplash.com/photo-1670819917515-0bf72062d670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiYXJ0ZW5kZXIlMjBjb2NrdGFpbHxlbnwwfHx8fDE3NjkyOTMyNjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bartender cocktail"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Fresh ingredients on a wooden table.",
+      "imageUrl": "https://images.unsplash.com/photo-1665088127661-83aeff6104c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmcmVzaCUyMGluZ3JlZGllbnRzfGVufDB8fHx8MTc2OTQwMzY4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fresh ingredients"
+    },
+    {
+      "id": "menu-item-1",
+      "description": "A sizzling steak on a plate.",
+      "imageUrl": "https://images.unsplash.com/photo-1558030137-a56c1b004fa3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxncmlsbGVkJTIwc3RlYWt8ZW58MHx8fHwxNzY5MzIyOTA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "grilled steak"
+    },
+    {
+      "id": "menu-item-2",
+      "description": "A colorful salmon salad.",
+      "imageUrl": "https://images.unsplash.com/photo-1679744034783-818531344257?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzYWxtb24lMjBzYWxhZHxlbnwwfHx8fDE3Njk0MDM2ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "salmon salad"
+    },
+    {
+      "id": "menu-item-3",
+      "description": "A rich chocolate lava cake.",
+      "imageUrl": "https://images.unsplash.com/photo-1576618148423-df549bcb6972?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjaG9jb2xhdGUlMjBjYWtlfGVufDB8fHx8MTc2OTM3MDIyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chocolate cake"
+    },
+    {
+      "id": "menu-item-4",
+      "description": "A burger with fries.",
+      "imageUrl": "https://images.unsplash.com/photo-1687881063352-9083a0a7675e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxidXJnZXIlMjBmcmllc3xlbnwwfHx8fDE3NjkzNTE4MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "burger fries"
+    },
+    {
+      "id": "menu-item-5",
+      "description": "A vegetarian pasta dish.",
+      "imageUrl": "https://images.unsplash.com/photo-1676300184847-4ee4030409c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwYXN0YSUyMGRpc2h8ZW58MHx8fHwxNzY5MzcwMTg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pasta dish"
+    },
+    {
+      "id": "menu-item-6",
+      "description": "A bowl of spicy soup.",
+      "imageUrl": "https://images.unsplash.com/photo-1610452229974-74c9283a3873?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzcGljeSUyMHNvdXB8ZW58MHx8fHwxNzY5Mzk4NjQzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "spicy soup"
+    },
+    {
+      "id": "map-image",
+      "description": "A static map showing a location.",
+      "imageUrl": "https://images.unsplash.com/photo-1476385822777-70eabacbd41f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXR5JTIwbWFwfGVufDB8fHx8MTc2OTMzMTgxOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city map"
+    }
+  ]
 }
