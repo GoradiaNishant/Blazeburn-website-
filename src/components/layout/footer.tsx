@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Mail, MapPin, Phone, Utensils, Twitter, Instagram, Facebook } from 'lucide-react';
+import { Mail, MapPin, Phone, Twitter, Instagram, Facebook } from 'lucide-react';
+import { BlazeburnIcon } from '../icons/blazeburn-icon';
 
 export function Footer() {
   return (
@@ -7,12 +8,12 @@ export function Footer() {
       <div className="container mx-auto grid grid-cols-1 gap-8 px-4 md:grid-cols-3 md:px-6">
         <div className="flex flex-col items-start gap-4">
           <Link href="/" className="flex items-center gap-2" aria-label="Back to homepage">
-            <Utensils className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-headline font-bold text-foreground">Blazeburn</span>
+            <BlazeburnIcon className="h-10 w-10 text-primary" />
+            <div>
+              <span className="text-2xl font-headline font-bold text-foreground">Blazeburn</span>
+              <p className="text-xs text-muted-foreground -mt-1 tracking-wider uppercase">Deliciously Crafted</p>
+            </div>
           </Link>
-          <p className="text-muted-foreground">
-            A symphony of flavors, grilled to perfection.
-          </p>
           <p className="font-bold text-foreground">blazeburn.in</p>
         </div>
         <div className="space-y-4">

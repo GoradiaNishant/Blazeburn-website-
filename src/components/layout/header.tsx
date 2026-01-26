@@ -1,10 +1,11 @@
 "use client";
 
 import Link from 'next/link';
-import { Menu, Utensils } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
+import { BlazeburnIcon } from '@/components/icons/blazeburn-icon';
 
 const navLinks = [
   { href: '#menu', label: 'Menu' },
@@ -27,8 +28,11 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Back to homepage">
-          <Utensils className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-headline font-bold text-foreground">Blazeburn</span>
+          <BlazeburnIcon className="h-10 w-10 text-primary" />
+          <div>
+            <span className="text-2xl font-headline font-bold text-foreground">Blazeburn</span>
+            <p className="text-xs text-muted-foreground -mt-1 tracking-wider uppercase">Deliciously Crafted</p>
+          </div>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
@@ -51,7 +55,7 @@ export function Header() {
             <SheetContent side="right">
               <div className="grid gap-6 p-6">
                 <Link href="/" className="flex items-center gap-2">
-                  <Utensils className="h-6 w-6 text-primary" />
+                  <BlazeburnIcon className="h-8 w-8 text-primary" />
                   <span className="text-xl font-headline font-bold">Blazeburn</span>
                 </Link>
                 <nav className="grid gap-4">
