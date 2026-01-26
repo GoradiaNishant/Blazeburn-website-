@@ -15,12 +15,14 @@ const navLinks = [
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
+    setIsMounted(true);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -45,32 +47,34 @@ export function Header() {
           </Button>
         </nav>
         <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-6 p-6">
-                <Link href="/" className="flex items-center gap-2">
-                  <BlazeburnIcon className="h-8 w-8 text-primary" />
-                  <span className="text-xl font-headline font-bold">Blazeburn</span>
-                </Link>
-                <nav className="grid gap-4">
-                  {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-                <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href="#contact">Book a Table</Link>
+          {isMounted && (
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle navigation menu</span>
                 </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="grid gap-6 p-6">
+                  <Link href="/" className="flex items-center gap-2">
+                    <BlazeburnIcon className="h-8 w-8 text-primary" />
+                    <span className="text-xl font-headline font-bold">Blazeburn</span>
+                  </Link>
+                  <nav className="grid gap-4">
+                    {navLinks.map((link) => (
+                      <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                  <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Link href="#contact">Book a Table</Link>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          )}
         </div>
       </div>
     </header>

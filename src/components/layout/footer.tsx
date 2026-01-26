@@ -1,8 +1,17 @@
+"use client";
+
 import Link from 'next/link';
 import { Mail, MapPin, Phone, Twitter, Instagram, Facebook } from 'lucide-react';
 import { BlazeburnIcon } from '../icons/blazeburn-icon';
+import { useState, useEffect } from 'react';
 
 export function Footer() {
+  const [year, setYear] = useState(() => new Date().getFullYear());
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-secondary/50 py-12">
       <div className="container mx-auto grid grid-cols-1 gap-8 px-4 md:grid-cols-3 md:px-6">
@@ -49,7 +58,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container mx-auto mt-8 border-t border-border pt-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Blazeburn. All Rights Reserved.</p>
+        <p>&copy; {year} Blazeburn. All Rights Reserved.</p>
       </div>
     </footer>
   );
