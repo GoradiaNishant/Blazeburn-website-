@@ -1,18 +1,7 @@
 import * as React from 'react';
 
 export const BlazeburnIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 100 100" fill="currentColor" {...props}>
-    <text
-      x="50%"
-      y="60%"
-      dominantBaseline="central"
-      textAnchor="middle"
-      fontFamily="'Playfair Display', serif"
-      fontSize="85"
-      fontWeight="bold"
-    >
-      <tspan dx="-0.22em">b</tspan>
-      <tspan dx="-0.42em" dy="0.05em">b</tspan>
-    </text>
+  <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
+    <path d="M5.25 3.117v9.766h.882c1.435 0 2.44-.218 3.105-.654c.664-.436.997-1.15.997-2.142c0-.982-.3-1.745-.898-2.288c-.599-.543-1.464-.814-2.596-.814H5.25zm.968 1.14h.56c1.137 0 1.93.184 2.379.552c.45.368.674.9.674 1.595c0 .726-.234 1.28-.703 1.664c-.47.384-1.25.575-2.344.575h-.566V4.257zm4.455 0v9.766h.882c1.435 0 2.44-.218 3.105-.654c.664-.436.997-1.15.997-2.142c0-.982-.3-1.745-.898-2.288c-.599-.543-1.464-.814-2.596-.814h-1.65zm.968 1.14h.56c1.137 0 1.93.184 2.379.552c.45.368.674.9.674 1.595c0 .726-.234 1.28-.703 1.664c-.47.384-1.25.575-2.344.575h-.566V5.397z"/>
   </svg>
 );
