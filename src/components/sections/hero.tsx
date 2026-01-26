@@ -21,7 +21,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 text-center space-y-6 px-4">
         <h1 className="text-5xl md:text-7xl font-headline font-bold tracking-tight">
-          Blazeburn Bistro
+          Blazeburn
         </h1>
         <p className="text-xl md:text-2xl max-w-2xl mx-auto text-primary-foreground/90">
           Where every meal is a celebration of fire and flavor.

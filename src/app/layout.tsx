@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Blazeburn Bistro',
-  description: 'Experience the flame of flavor at Blazeburn Bistro. A culinary journey in every dish.',
+  title: 'Blazeburn',
+  description: 'Experience the flame of flavor at Blazeburn. A culinary journey in every dish.',
 };
 
 export default function RootLayout({

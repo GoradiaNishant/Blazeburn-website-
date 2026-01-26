@@ -28,7 +28,7 @@ export function Header() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Back to homepage">
           <Utensils className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-headline font-bold text-foreground">Blazeburn Bistro</span>
+          <span className="text-2xl font-headline font-bold text-foreground">Blazeburn</span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
@@ -52,7 +52,7 @@ export function Header() {
               <div className="grid gap-6 p-6">
                 <Link href="/" className="flex items-center gap-2">
                   <Utensils className="h-6 w-6 text-primary" />
-                  <span className="text-xl font-headline font-bold">Blazeburn Bistro</span>
+                  <span className="text-xl font-headline font-bold">Blazeburn</span>
                 </Link>
                 <nav className="grid gap-4">
                   {navLinks.map((link) => (

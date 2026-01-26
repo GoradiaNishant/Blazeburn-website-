@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col items-start gap-4">
           <Link href="/" className="flex items-center gap-2" aria-label="Back to homepage">
             <Utensils className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-headline font-bold text-foreground">Blazeburn Bistro</span>
+            <span className="text-2xl font-headline font-bold text-foreground">Blazeburn</span>
           </Link>
           <p className="text-muted-foreground">
             A symphony of flavors, grilled to perfection.
@@ -48,7 +48,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container mx-auto mt-8 border-t border-border pt-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Blazeburn Bistro. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Blazeburn. All Rights Reserved.</p>
       </div>
     </footer>
   );
