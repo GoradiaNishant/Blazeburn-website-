@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -9,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 const formSchema = z.object({
@@ -20,7 +18,6 @@ const formSchema = z.object({
 
 export function ContactSection() {
   const { toast } = useToast();
-  const mapImage = PlaceHolderImages.find(p => p.id === 'map-image');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -75,20 +72,18 @@ export function ContactSection() {
                  <span>Sat - Sun</span><span>10:00am - 11:00pm</span>
                </div>
             </div>
-            {mapImage && (
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="block relative w-full aspect-video rounded-lg overflow-hidden shadow-lg group">
-                    <Image
-                        src={mapImage.imageUrl}
-                        alt="Restaurant location on map"
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        data-ai-hint={mapImage.imageHint}
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-white text-lg font-bold">View on Google Maps</span>
-                    </div>
-                </a>
-            )}
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://maps.google.com/maps?q=G602%2C%20Sukan%20Heights%2C%20Vastral%2C%20Ahmedabad%2C%20Gujarat%2C%20India%2C%20382418&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Restaurant Location"
+              ></iframe>
+            </div>
           </div>
           <div>
             <Form {...form}>
