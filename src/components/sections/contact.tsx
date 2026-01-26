@@ -60,7 +60,7 @@ export function ContactSection() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-6 w-6 text-primary flex-shrink-0" />
-                  <a href="tel:+1234567890" className="hover:text-primary">(123) 456-7890</a>
+                  <a href="tel:+917228028036" className="hover:text-primary">+91 7228028036</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="h-6 w-6 text-primary flex-shrink-0" />
