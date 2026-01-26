@@ -56,7 +56,7 @@ export function ContactSection() {
               <ul className="space-y-3 text-lg text-muted-foreground">
                 <li className="flex items-start gap-3">
                   <MapPin className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                  <span>123 Culinary Lane, Foodie City, 12345</span>
+                  <span>G602, Sukan Heights, Vastral, Ahmedabad, Gujarat, India, 382418</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-6 w-6 text-primary flex-shrink-0" />

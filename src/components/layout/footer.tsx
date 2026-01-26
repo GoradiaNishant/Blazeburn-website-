@@ -21,7 +21,7 @@ export function Footer() {
           <ul className="space-y-2 text-muted-foreground">
             <li className="flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
-              <span>123 Culinary Lane, Foodie City, 12345</span>
+              <span>G602, Sukan Heights, Vastral, Ahmedabad, Gujarat, India, 382418</span>
             </li>
             <li className="flex items-center gap-2">
               <Phone className="h-5 w-5 text-primary" />
