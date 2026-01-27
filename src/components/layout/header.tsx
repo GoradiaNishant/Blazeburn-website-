@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
 import { BlazeburnIcon } from '@/components/icons/blazeburn-icon';
+import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: '#menu', label: 'Menu' },
@@ -36,7 +37,7 @@ export function Header() {
             <p className="text-xs text-muted-foreground -mt-1 tracking-wider uppercase">Deliciously Crafted</p>
           </div>
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 md:flex">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
               {link.label}
@@ -45,8 +46,9 @@ export function Header() {
           <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
             <Link href="#contact">Book a Table</Link>
           </Button>
+          <ThemeToggle />
         </nav>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
           {isMounted && (
             <Sheet>
               <SheetTrigger asChild>
@@ -57,10 +59,13 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right">
                 <div className="grid gap-6 p-6">
-                  <Link href="/" className="flex items-center gap-2">
-                    <BlazeburnIcon className="h-8 w-8 text-primary" />
-                    <span className="text-xl font-headline font-bold">Blazeburn</span>
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link href="/" className="flex items-center gap-2">
+                      <BlazeburnIcon className="h-8 w-8 text-primary" />
+                      <span className="text-xl font-headline font-bold">Blazeburn</span>
+                    </Link>
+                    <ThemeToggle />
+                  </div>
                   <nav className="grid gap-4">
                     {navLinks.map((link) => (
                       <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
