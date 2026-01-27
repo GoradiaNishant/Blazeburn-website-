@@ -38,20 +38,19 @@ export function Header() {
           </div>
         </Link>
         
-        <div className="hidden md:flex items-center">
-            <nav className="flex items-center gap-6 mr-6">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-            <div className="flex items-center gap-2">
-                <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href="#contact">Book a Table</Link>
-                </Button>
-                {isMounted && <ThemeToggle />}
-            </div>
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden md:flex items-center gap-2">
+            <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+              <Link href="#contact">Book a Table</Link>
+            </Button>
+            {isMounted && <ThemeToggle />}
         </div>
 
         <div className="md:hidden flex items-center gap-2">
@@ -64,13 +63,13 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="flex flex-col p-0">
-                <SheetHeader className="border-b p-6">
+                <SheetHeader className="border-b p-6 pr-12">
                    <div className='flex justify-between items-center'>
                      <Link href="/" className="flex items-center gap-2">
                         <BlazeburnIcon className="h-8 w-8 text-primary" />
                         <SheetTitle><span className="text-xl font-headline font-bold">Blazeburn</span></SheetTitle>
                       </Link>
-                    <ThemeToggle />
+                    {isMounted && <ThemeToggle />}
                    </div>
                 </SheetHeader>
                 <nav className="flex flex-col gap-4 p-6 pt-10">
