@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
 import { BlazeburnIcon } from '@/components/icons/blazeburn-icon';
 import { ThemeToggle } from '../theme-toggle';
@@ -38,8 +38,8 @@ export function Header() {
           </div>
         </Link>
         
-        <div className="hidden items-center gap-6 md:flex">
-            <nav className="flex items-center gap-6">
+        <div className="hidden md:flex items-center">
+            <nav className="flex items-center gap-6 mr-6">
               {navLinks.map((link) => (
                 <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
                   {link.label}
@@ -50,7 +50,7 @@ export function Header() {
                 <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
                   <Link href="#contact">Book a Table</Link>
                 </Button>
-                <ThemeToggle />
+                {isMounted && <ThemeToggle />}
             </div>
         </div>
 
@@ -64,14 +64,16 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="flex flex-col p-0">
-                <SheetHeader className="border-b flex-row justify-between items-center p-6">
-                   <Link href="/" className="flex items-center gap-2">
-                      <BlazeburnIcon className="h-8 w-8 text-primary" />
-                      <SheetTitle><span className="text-xl font-headline font-bold">Blazeburn</span></SheetTitle>
-                    </Link>
-                  <ThemeToggle />
+                <SheetHeader className="border-b p-6">
+                   <div className='flex justify-between items-center'>
+                     <Link href="/" className="flex items-center gap-2">
+                        <BlazeburnIcon className="h-8 w-8 text-primary" />
+                        <SheetTitle><span className="text-xl font-headline font-bold">Blazeburn</span></SheetTitle>
+                      </Link>
+                    <ThemeToggle />
+                   </div>
                 </SheetHeader>
-                <nav className="flex flex-col gap-4 p-6">
+                <nav className="flex flex-col gap-4 p-6 pt-10">
                   {navLinks.map((link) => (
                     <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
                       {link.label}
