@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
 import { BlazeburnIcon } from '@/components/icons/blazeburn-icon';
 import { ThemeToggle } from '../theme-toggle';
@@ -58,25 +58,26 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
-                <div className="grid gap-6 p-6">
-                  <div className="flex items-center justify-between">
+                <SheetHeader>
+                  <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                </SheetHeader>
+                <div className="flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2">
                       <BlazeburnIcon className="h-8 w-8 text-primary" />
                       <span className="text-xl font-headline font-bold">Blazeburn</span>
                     </Link>
                     <ThemeToggle />
-                  </div>
-                  <nav className="grid gap-4">
-                    {navLinks.map((link) => (
-                      <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
-                        {link.label}
-                      </Link>
-                    ))}
-                  </nav>
-                  <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                    <Link href="#contact">Book a Table</Link>
-                  </Button>
                 </div>
+                <nav className="grid gap-4">
+                  {navLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+                <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                  <Link href="#contact">Book a Table</Link>
+                </Button>
               </SheetContent>
             </Sheet>
           )}
