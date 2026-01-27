@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
 import { BlazeburnIcon } from '@/components/icons/blazeburn-icon';
 import { ThemeToggle } from '../theme-toggle';
@@ -37,16 +37,20 @@ export function Header() {
             <p className="text-xs text-muted-foreground -mt-1 tracking-wider uppercase">Deliciously Crafted</p>
           </div>
         </Link>
-        <nav className="hidden items-center gap-4 md:flex">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
-              {link.label}
-            </Link>
-          ))}
-          <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-            <Link href="#contact">Book a Table</Link>
-          </Button>
-          <ThemeToggle />
+        <nav className="hidden items-center gap-8 md:flex">
+          <div className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-4">
+            <Button asChild className="font-bold bg-accent text-white hover:bg-accent/90">
+              <Link href="#contact">Book a Table</Link>
+            </Button>
+            <ThemeToggle />
+          </div>
         </nav>
         <div className="md:hidden flex items-center gap-2">
           {isMounted && (
@@ -61,23 +65,27 @@ export function Header() {
                 <SheetHeader>
                   <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                 </SheetHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between p-4 border-b">
                     <Link href="/" className="flex items-center gap-2">
                       <BlazeburnIcon className="h-8 w-8 text-primary" />
                       <span className="text-xl font-headline font-bold">Blazeburn</span>
                     </Link>
                     <ThemeToggle />
+                  </div>
+                  <nav className="flex flex-col gap-4 p-4">
+                    {navLinks.map((link) => (
+                      <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                  <div className="mt-auto p-4">
+                    <Button asChild className="w-full font-bold bg-accent text-white hover:bg-accent/90">
+                      <Link href="#contact">Book a Table</Link>
+                    </Button>
+                  </div>
                 </div>
-                <nav className="grid gap-4">
-                  {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-                <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href="#contact">Book a Table</Link>
-                </Button>
               </SheetContent>
             </Sheet>
           )}
