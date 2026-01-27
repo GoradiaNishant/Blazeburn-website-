@@ -19,11 +19,11 @@ export function Header() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
-    setIsMounted(true);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -38,22 +38,23 @@ export function Header() {
           </div>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden md:flex items-center gap-2">
-            <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="#contact">Book a Table</Link>
-            </Button>
-            {isMounted && <ThemeToggle />}
+        <div className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-6">
+            {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary">
+                {link.label}
+                </Link>
+            ))}
+            </nav>
+            <div className="flex items-center gap-2">
+                <Button asChild className="font-bold bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Link href="#contact">Book a Table</Link>
+                </Button>
+                {isMounted && <ThemeToggle />}
+            </div>
         </div>
 
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex items-center">
           {isMounted && (
             <Sheet>
               <SheetTrigger asChild>
@@ -69,7 +70,9 @@ export function Header() {
                         <BlazeburnIcon className="h-8 w-8 text-primary" />
                         <SheetTitle><span className="text-xl font-headline font-bold">Blazeburn</span></SheetTitle>
                       </Link>
-                    {isMounted && <ThemeToggle />}
+                    <div className="flex items-center gap-2">
+                      {isMounted && <ThemeToggle />}
+                    </div>
                    </div>
                 </SheetHeader>
                 <nav className="flex flex-col gap-4 p-6 pt-10">
