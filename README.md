@@ -87,5 +87,3 @@ To deploy your own version of this site, follow these steps:
 Once finished, the CLI will provide you with your live URL. You can also connect a custom domain like `blazeburn.in` through the Firebase console.
 
 ---
-
-Developed with ❤️ in Firebase Studio.
