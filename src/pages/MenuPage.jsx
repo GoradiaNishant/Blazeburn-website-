@@ -268,7 +268,8 @@ function MenuPage() {
     e.preventDefault();
     const element = document.getElementById(cuisineId);
     if (element) {
-      const offset = 100;
+      // Mobile has sticky navbar + sticky cuisine tabs; give extra offset.
+      const offset = window.innerWidth <= 768 ? 140 : 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       

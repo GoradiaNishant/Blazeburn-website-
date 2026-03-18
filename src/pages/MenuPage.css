@@ -491,9 +491,12 @@
     font-size: 0.95rem;
   }
   
+  /* On real mobile browsers, multiple stacked sticky elements can overlap/jump.
+     Keep the cuisine tabs sticky; let the search bar scroll normally. */
   .search-bar-container {
+    position: relative;
+    top: auto;
     padding: var(--spacing-sm) 0;
-    top: 56px;
   }
   
   .search-bar input {
@@ -503,9 +506,14 @@
   }
 
   .mobile-tab-bar {
-    top: 124px; /* keep below sticky search bar */
+    position: sticky;
+    top: 56px; /* just below navbar */
     margin: 0;
     padding: 0;
+    z-index: 220;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .tab-scroll-container {
