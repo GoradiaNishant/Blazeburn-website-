@@ -98,6 +98,8 @@
   color: rgba(245, 240, 232, 0.75);
   font-size: 0.9rem;
   font-family: 'Inter', 'Lato', sans-serif;
+  flex-wrap: wrap;
+  word-break: break-word;
 }
 
 .contact-icon {
@@ -129,6 +131,7 @@
 .social-icons {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .social-icons a {
@@ -229,5 +232,20 @@
 
   .footer-brand-text h3 {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 0 16px;
+  }
+
+  .contact-row {
+    font-size: 0.85rem;
+  }
+
+  .social-icons a {
+    width: 44px;
+    height: 44px;
   }
 }

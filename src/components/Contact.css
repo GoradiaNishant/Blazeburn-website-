@@ -129,16 +129,50 @@
 }
 
 @media (max-width: 768px) {
+  .contact .container {
+    padding: 0 var(--spacing-sm);
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
 
   .contact-info {
     grid-template-columns: 1fr; /* Stack cards on mobile */
   }
+
+  .map-container {
+    min-height: 220px;
+  }
   
   .contact-form-container {
     padding: var(--spacing-md);
+    border-radius: 16px;
+  }
+
+  .contact-form-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact .container {
+    padding: 0 16px;
+  }
+
+  .info-card {
+    padding: var(--spacing-sm);
+  }
+
+  .info-icon {
+    font-size: 1.75rem;
   }
 }
 
