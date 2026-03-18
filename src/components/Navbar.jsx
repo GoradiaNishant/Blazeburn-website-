@@ -1,15 +1,34 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './Navbar.css';
 
 function Navbar() {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const isActive = (path) => {
     return location.pathname === path;
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <header className="navbar-header">
+    <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         {/* Logo Section - Left */}
         <Link to="/" className="navbar-brand">
@@ -20,8 +39,18 @@ function Navbar() {
           </div>
         </Link>
 
+        {/* Hamburger Toggle */}
+        <button 
+          className={`mobile-menu-toggle ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={toggleMobileMenu}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         {/* Navigation - Hidden until needed */}
-        <nav className="navbar-nav">
+        <nav className={`navbar-nav ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           <Link 
             to="/" 
             className={`nav-link ${isActive('/') ? 'active' : ''}`}

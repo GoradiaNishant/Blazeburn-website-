@@ -494,7 +494,7 @@
 
 @media (max-width: 768px) {
   .about-hero {
-    min-height: 500px;
+    min-height: auto;
     padding-top: var(--spacing-md);
   }
   
@@ -504,21 +504,34 @@
   }
   
   .about-collage {
-    height: 400px;
-    margin-top: -80px;
+    height: auto;
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
   
-  .collage-large {
+  .collage-image {
+    position: static;
     width: 100%;
-    max-width: 350px;
-    height: 400px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    max-width: 100%;
+    height: auto;
+    transform: none !important;
+    border-radius: 16px;
+    display: block;
   }
   
-  .collage-medium {
-    display: none;
+  .collage-large, .collage-medium, .collage-small {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    transform: none;
+    left: auto;
+    right: auto;
+    top: auto;
+    display: block; /* Show all stacked */
   }
   
   [data-parallax] {

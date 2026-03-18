@@ -156,15 +156,32 @@
 
 @media (max-width: 768px) {
   .amenities {
-    padding: 60px 20px;
+    padding: 60px 0;
+  }
+
+  .amenities-header {
+    padding: 0 20px;
   }
 
   .amenities-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 0 20px 20px 20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .amenities-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .amenity-card {
+    flex: 0 0 auto;
+    min-width: 85vw;
+    scroll-snap-align: center;
     height: 300px;
   }
 
