@@ -571,6 +571,11 @@
   .item-price {
     font-size: 0.95rem;
   }
+
+  .cuisine-section {
+    /* Navbar (sticky) + cuisine tab bar (sticky) */
+    scroll-margin-top: 125px;
+  }
 }
 
 /* Small Mobile (<480px) */
@@ -602,5 +607,9 @@
   .clear-btn {
     right: 12px;
     padding: 6px 10px;
+  }
+
+  .cuisine-section {
+    scroll-margin-top: 115px;
   }
 }

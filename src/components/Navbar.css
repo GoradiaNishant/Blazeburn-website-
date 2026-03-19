@@ -132,8 +132,8 @@
   .navbar-nav {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 75vw;
+    right: -100vw;
+    width: 100vw;
     height: 100vh;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
@@ -191,7 +191,7 @@
 
 @media (max-width: 480px) {
   .navbar-nav {
-    width: min(85vw, 380px);
+    width: 100vw;
     padding: 1.5rem;
     gap: 28px;
   }

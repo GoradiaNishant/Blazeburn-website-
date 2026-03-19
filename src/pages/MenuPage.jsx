@@ -269,7 +269,12 @@ function MenuPage() {
     const element = document.getElementById(cuisineId);
     if (element) {
       // Mobile has sticky navbar + sticky cuisine tabs; give extra offset.
-      const offset = window.innerWidth <= 768 ? 140 : 100;
+      const offset =
+        window.innerWidth <= 480
+          ? 120
+          : window.innerWidth <= 768
+            ? 130
+            : 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       
@@ -286,7 +291,7 @@ function MenuPage() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = menuData.map(c => document.getElementById(c.id));
-      const scrollPosition = window.scrollY + 150;
+      const scrollPosition = window.scrollY + (window.innerWidth <= 768 ? 130 : 150);
       
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
