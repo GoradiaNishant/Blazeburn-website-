@@ -1,0 +1,185 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.page {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: 16px;
+}
+
+.screenOne {
+  width: 100%;
+  max-width: 100%;
+}
+
+.menuPage {
+  width: 100%;
+  max-width: 100%;
+}
+
+.menuTitle {
+  display: block;
+  padding: 16px 16px 4px 16px;
+  font-size: 22px;
+  font-weight: 500;
+  position: relative;
+  z-index: 0;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.searchWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 8px 16px;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--border-primary);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 16px;
+  outline: none;
+}
+
+.categoryList {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 16px 16px;
+}
+
+.categoryCard {
+  width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.categoryText {
+  min-width: 0;
+}
+
+.categoryName {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.categoryCount {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.arrow {
+  font-size: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.groupSection {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 14px;
+}
+
+.groupLabel {
+  margin: 0 0 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.cardList {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.itemCard {
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.itemCard:last-child {
+  border-bottom: none;
+}
+
+.itemName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.itemDescription {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.noResults {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.screenTwo {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 16px 16px;
+}
+
+.backButton {
+  min-height: 48px;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.screenHeading {
+  margin: 4px 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+

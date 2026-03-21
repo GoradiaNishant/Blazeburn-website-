@@ -537,11 +537,21 @@
   }
   
   .cuisine-header {
-    height: 200px;
+    height: auto;
+    /* Reduce vertical space used by the cuisine header image on mobile */
+    min-height: 140px;
   }
   
   .cuisine-header-overlay h2 {
     font-size: 1.75rem;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .cuisine-header-overlay {
+    padding: 1rem;
   }
   
   .cuisine-icon-large {
@@ -552,6 +562,8 @@
     grid-template-columns: 1fr;
     padding: 12px;
     gap: 12px;
+    width: 100%;
+    overflow-x: hidden;
   }
   
   .menu-item {
@@ -559,6 +571,16 @@
     min-height: 44px; /* Touch target */
     display: flex;
     align-items: center;
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  .menu-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
   }
   
   .item-name {
@@ -566,6 +588,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   
   .item-price {
@@ -575,6 +601,18 @@
   .cuisine-section {
     /* Navbar (sticky) + cuisine tab bar (sticky) */
     scroll-margin-top: 125px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .cuisine-header-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
   }
 }
 
@@ -585,15 +623,16 @@
   }
 
   .cuisine-header {
-    height: 160px;
+    height: auto;
+    min-height: 120px;
   }
   
   .cuisine-header-overlay {
-    padding: var(--spacing-sm);
+    padding: 0.9rem;
   }
   
   .cuisine-header-overlay h2 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
   
   .menu-items-grid {

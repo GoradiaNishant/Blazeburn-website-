@@ -360,7 +360,8 @@
   .menu-tab {
     flex: 1;
     justify-content: center;
-    min-width: 200px;
+    /* Prevent horizontal overflow on small portrait screens */
+    min-width: 0;
   }
   
   .tab-label {

@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
-import './MenuPage.css';
+import { useEffect, useState } from 'react';
+import styles from './MenuPageDrillIn.module.css';
 
 function MenuPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCuisine, setActiveCuisine] = useState('north-indian');
-  const [filteredMenuData, setFilteredMenuData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   // Complete menu data with 16 cuisines
   const menuData = [
@@ -239,202 +237,114 @@ function MenuPage() {
     },
   ];
 
-  // Initialize filtered data
+  const normalizedSearch = searchQuery.trim().toLowerCase();
+  const isSearching = normalizedSearch.length > 0;
+
+  const withDescriptions = menuData.map((category) => ({
+    ...category,
+    items: category.items.map((item) => ({
+      ...item,
+      description: item.isJain
+        ? 'Jain option available'
+        : 'Popular vegetarian choice',
+    })),
+  }));
+
+  const groupedSearchResults = withDescriptions
+    .map((category) => ({
+      id: category.id,
+      name: category.name,
+      items: category.items.filter((item) =>
+        item.name.toLowerCase().includes(normalizedSearch)
+      ),
+    }))
+    .filter((category) => category.items.length > 0);
+
   useEffect(() => {
-    setFilteredMenuData(menuData);
-  }, []);
-
-  // Search functionality
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    
-    if (!query.trim()) {
-      setFilteredMenuData(menuData);
-      return;
-    }
-    
-    const filtered = menuData.map(cuisine => ({
-      ...cuisine,
-      items: cuisine.items.filter(item =>
-        item.name.toLowerCase().includes(query.toLowerCase())
-      )
-    })).filter(cuisine => cuisine.items.length > 0);
-    
-    setFilteredMenuData(filtered);
-  };
-
-  // Smooth scroll to cuisine section
-  const handleCuisineClick = (e, cuisineId) => {
-    e.preventDefault();
-    const element = document.getElementById(cuisineId);
-    if (element) {
-      // Mobile has sticky navbar + sticky cuisine tabs; give extra offset.
-      const offset =
-        window.innerWidth <= 480
-          ? 120
-          : window.innerWidth <= 768
-            ? 130
-            : 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
-      setActiveCuisine(cuisineId);
-    }
-  };
-
-  // Scroll spy - detect active section
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = menuData.map(c => document.getElementById(c.id));
-      const scrollPosition = window.scrollY + (window.innerWidth <= 768 ? 130 : 150);
-      
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveCuisine(menuData[i].id);
-          break;
-        }
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Count total filtered items
-  const totalResults = filteredMenuData.reduce((sum, cuisine) => sum + cuisine.items.length, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [selectedCategory]);
 
   return (
-    <div className="menu-page">
-      {/* Hero Section */}
-      <div className="menu-page-hero">
-        <div className="container">
-          <h1 className="menu-page-title">Our Complete Menu</h1>
-          <p className="menu-page-subtitle">
-            16 World Cuisines • 900+ Vegetarian Delicacies • Jain Options Available
-          </p>
-        </div>
-      </div>
+    <div className={styles.page}>
+      {selectedCategory === null ? (
+        <div className={styles.menuPage}>
+          <h1 className={styles.menuTitle}>Our Menu</h1>
 
-      {/* Search Bar */}
-      <div className="search-bar-container">
-        <div className="container">
-          <div className="search-bar">
+          <div className={styles.searchWrapper}>
             <input
+              className={styles.searchInput}
               type="text"
               placeholder="Search menu items..."
               value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search menu items"
             />
-            {searchQuery && (
-              <button className="clear-btn" onClick={() => handleSearch('')}>
-                Clear
-              </button>
-            )}
-          </div>
-          {searchQuery && (
-            <p className="search-results-count">
-              Found {totalResults} item{totalResults !== 1 ? 's' : ''}
-            </p>
-          )}
-        </div>
-      </div>
-
-      {/* Menu Layout */}
-      <div className="menu-layout">
-        <div className="container">
-          {/* Sidebar Navigation (Desktop) */}
-          <nav className="menu-sidebar">
-            <h3>Cuisines</h3>
-            <ul>
-              {menuData.map(cuisine => (
-                <li key={cuisine.id}>
-                  <a
-                    href={`#${cuisine.id}`}
-                    className={activeCuisine === cuisine.id ? 'active' : ''}
-                    onClick={(e) => handleCuisineClick(e, cuisine.id)}
-                  >
-                    {cuisine.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Mobile Tab Bar */}
-          <div className="mobile-tab-bar">
-            <div className="tab-scroll-container">
-              {menuData.map(cuisine => (
-                <button
-                  key={cuisine.id}
-                  className={activeCuisine === cuisine.id ? 'active' : ''}
-                  onClick={(e) => handleCuisineClick(e, cuisine.id)}
-                >
-                  <span className="tab-name">{cuisine.name}</span>
-                </button>
-              ))}
-            </div>
           </div>
 
-          {/* Menu Content */}
-          <div className="menu-content">
-            {filteredMenuData.length === 0 ? (
-              <div className="no-results">
-                <p>No items found matching "{searchQuery}"</p>
-                <button onClick={() => handleSearch('')}>Clear Search</button>
-              </div>
-            ) : (
-              filteredMenuData.map(cuisine => (
-                <section
-                  key={cuisine.id}
-                  id={cuisine.id}
-                  className="cuisine-section"
-                >
-                  {/* Visual Header */}
-                  <div className="cuisine-header">
-                    <img
-                      src={cuisine.headerImage}
-                      alt={cuisine.name}
-                      className="cuisine-header-image"
-                      loading="lazy"
-                    />
-                    <div className="cuisine-header-overlay">
-                      <h2>
-                        {cuisine.name}
-                      </h2>
+          <div className={styles.categoryList}>
+            {isSearching ? (
+              groupedSearchResults.length === 0 ? (
+                <p className={styles.noResults}>No items found</p>
+              ) : (
+                groupedSearchResults.map((group) => (
+                  <section key={group.id} className={styles.groupSection}>
+                    <p className={styles.groupLabel}>{group.name}</p>
+                    <div className={styles.cardList}>
+                      {group.items.map((item, idx) => (
+                        <article key={`${group.id}-${idx}`} className={styles.itemCard}>
+                          <p className={styles.itemName}>{item.name}</p>
+                          <p className={styles.itemDescription}>{item.description}</p>
+                        </article>
+                      ))}
                     </div>
+                  </section>
+                ))
+              )
+            ) : (
+              withDescriptions.map((category) => (
+                <button
+                  key={category.id}
+                  type="button"
+                  className={styles.categoryCard}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  <div className={styles.categoryText}>
+                    <p className={styles.categoryName}>{category.name}</p>
+                    <p className={styles.categoryCount}>{category.items.length} items</p>
                   </div>
-
-                  {/* Two-Column Item Grid */}
-                  <div className="menu-items-grid">
-                    {cuisine.items.map((item, idx) => (
-                      <div key={idx} className="menu-item">
-                        <div className="item-info">
-                          <h4 className="item-name">
-                            {item.name}
-                            {item.isJain && (
-                              <span className="jain-badge" title="Jain Available">
-                                J
-                              </span>
-                            )}
-                          </h4>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
+                  <span className={styles.arrow}>›</span>
+                </button>
               ))
             )}
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={styles.screenTwo}>
+          <button
+            type="button"
+            className={styles.backButton}
+            onClick={() => setSelectedCategory(null)}
+          >
+            ← Back
+          </button>
 
-      <Footer />
+          <h2 className={styles.screenHeading}>{selectedCategory.name}</h2>
+
+          <div className={styles.cardList}>
+            {selectedCategory.items.map((item, idx) => {
+              const description = item.isJain
+                ? 'Jain option available'
+                : 'Popular vegetarian choice';
+              return (
+                <article key={`${selectedCategory.id}-${idx}`} className={styles.itemCard}>
+                  <p className={styles.itemName}>{item.name}</p>
+                  <p className={styles.itemDescription}>{description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

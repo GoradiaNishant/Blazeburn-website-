@@ -54,14 +54,15 @@ function Features() {
             <div 
               key={index} 
               className="feature-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="feature-card-inner">
                 <div className="feature-image-container">
                   <img src={feature.image} alt={feature.title} className="feature-image" />
                 </div>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
+                <div className="feature-card-text">
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
               </div>
             </div>
           ))}

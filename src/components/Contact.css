@@ -130,25 +130,53 @@
 
 @media (max-width: 768px) {
   .contact .container {
-    padding: 0 var(--spacing-sm);
+    padding: 0 1rem;
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
+    /* Stack contact info + form vertically */
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-md);
   }
 
   .contact-info {
     grid-template-columns: 1fr; /* Stack cards on mobile */
+    width: 100%;
+    min-width: 0;
   }
 
   .map-container {
     min-height: 220px;
+    width: 100%;
+    overflow: hidden;
   }
   
   .contact-form-container {
     padding: var(--spacing-md);
     border-radius: 16px;
+  }
+
+  /* Force the form to never exceed viewport width */
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Form fields should be full-width and block-level */
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  /* Submit button full width on mobile */
+  .contact-form .btn {
+    width: 100%;
   }
 
   .contact-form-container h3 {
@@ -160,11 +188,16 @@
   .form-group textarea {
     min-height: 44px;
   }
+
+  /* Prevent hover transform from causing horizontal overflow */
+  .info-card:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 480px) {
   .contact .container {
-    padding: 0 16px;
+    padding: 0 1rem;
   }
 
   .info-card {

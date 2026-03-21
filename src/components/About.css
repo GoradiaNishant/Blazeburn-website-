@@ -539,6 +539,39 @@
   }
   
   .about-features {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .feature-item {
+    margin-bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    transform: none !important;
+    position: relative;
+  }
+
+  .feature-item:nth-child(1),
+  .feature-item:nth-child(2),
+  .feature-item:nth-child(3),
+  .feature-item:nth-child(4) {
+    transform: none !important;
+  }
+
+  .feature-item:hover,
+  .feature-item:nth-child(1):hover,
+  .feature-item:nth-child(2):hover,
+  .feature-item:nth-child(3):hover,
+  .feature-item:nth-child(4):hover {
+    transform: none !important;
+  }
+
+  .feature-item::after,
+  .feature-item::before {
+    bottom: auto;
   }
 }

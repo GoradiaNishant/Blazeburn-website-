@@ -54,18 +54,21 @@ function Navbar() {
           <Link 
             to="/" 
             className={`nav-link ${isActive('/') ? 'active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Home
           </Link>
           <Link 
             to="/menu" 
             className={`nav-link ${isActive('/menu') ? 'active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Menu
           </Link>
           <Link 
             to="/contact" 
             className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact Us
           </Link>

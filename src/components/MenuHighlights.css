@@ -153,13 +153,45 @@
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
+
+  /* Mobile card sizing and layout */
+  .menu-card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 220px;
+    aspect-ratio: auto;
+  }
+
+  /* Anchor text overlay to bottom (avoid top clipping on mobile) */
+  .card-gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: auto;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: visible;
+  }
   
   .menu-card h3 {
-    font-size: 1.5rem;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+    line-height: 1.25;
   }
   
   .menu-description {
-    font-size: 0.85rem;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+    line-height: 1.35;
+    margin-bottom: 8px;
   }
 }
 
