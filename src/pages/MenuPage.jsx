@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './MenuPageDrillIn.module.css';
+import './MenuPage.css';
 
 function MenuPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [activeCuisine, setActiveCuisine] = useState('north-indian');
 
   // Complete menu data with 16 cuisines
   const menuData = [
@@ -260,91 +262,227 @@ function MenuPage() {
     }))
     .filter((category) => category.items.length > 0);
 
+  const filteredMenuData = normalizedSearch
+    ? menuData
+        .map((category) => ({
+          ...category,
+          items: category.items.filter((item) =>
+            item.name.toLowerCase().includes(normalizedSearch)
+          ),
+        }))
+        .filter((category) => category.items.length > 0)
+    : menuData;
+
+  const handleCuisineClick = (e, cuisineId) => {
+    e.preventDefault();
+    const element = document.getElementById(cuisineId);
+    if (!element) return;
+
+    const offset = 100;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+    setActiveCuisine(cuisineId);
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [selectedCategory]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) return;
+      const sections = menuData.map((c) => document.getElementById(c.id));
+      const scrollPosition = window.scrollY + 150;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveCuisine(menuData[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [menuData]);
+
   return (
-    <div className={styles.page}>
-      {selectedCategory === null ? (
-        <div className={styles.menuPage}>
-          <h1 className={styles.menuTitle}>Our Menu</h1>
+    <div className="menu-page">
+      <div className={styles.mobileOnly}>
+        <div className={styles.page}>
+          {selectedCategory === null ? (
+            <div className={styles.menuPage}>
+              <h1 className={styles.menuTitle}>Our Menu</h1>
 
-          <div className={styles.searchWrapper}>
-            <input
-              className={styles.searchInput}
-              type="text"
-              placeholder="Search menu items..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search menu items"
-            />
+              <div className={styles.searchWrapper}>
+                <input
+                  className={styles.searchInput}
+                  type="text"
+                  placeholder="Search menu items..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search menu items"
+                />
+              </div>
+
+              <div className={styles.categoryList}>
+                {isSearching ? (
+                  groupedSearchResults.length === 0 ? (
+                    <p className={styles.noResults}>No items found</p>
+                  ) : (
+                    groupedSearchResults.map((group) => (
+                      <section key={group.id} className={styles.groupSection}>
+                        <p className={styles.groupLabel}>{group.name}</p>
+                        <div className={styles.cardList}>
+                          {group.items.map((item, idx) => (
+                            <article key={`${group.id}-${idx}`} className={styles.itemCard}>
+                              <p className={styles.itemName}>{item.name}</p>
+                              <p className={styles.itemDescription}>{item.description}</p>
+                            </article>
+                          ))}
+                        </div>
+                      </section>
+                    ))
+                  )
+                ) : (
+                  withDescriptions.map((category) => (
+                    <button
+                      key={category.id}
+                      type="button"
+                      className={styles.categoryCard}
+                      onClick={() => setSelectedCategory(category)}
+                    >
+                      <div className={styles.categoryText}>
+                        <p className={styles.categoryName}>{category.name}</p>
+                        <p className={styles.categoryCount}>{category.items.length} items</p>
+                      </div>
+                      <span className={styles.arrow}>›</span>
+                    </button>
+                  ))
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className={styles.screenTwo}>
+              <button
+                type="button"
+                className={styles.backButton}
+                onClick={() => setSelectedCategory(null)}
+              >
+                ← Back
+              </button>
+
+              <h2 className={styles.screenHeading}>{selectedCategory.name}</h2>
+
+              <div className={styles.cardList}>
+                {selectedCategory.items.map((item, idx) => {
+                  const description = item.isJain
+                    ? 'Jain option available'
+                    : 'Popular vegetarian choice';
+                  return (
+                    <article key={`${selectedCategory.id}-${idx}`} className={styles.itemCard}>
+                      <p className={styles.itemName}>{item.name}</p>
+                      <p className={styles.itemDescription}>{description}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className={styles.desktopOnly}>
+        <div className="menu-page-hero">
+          <div className="container">
+            <h1 className="menu-page-title">Our Complete Menu</h1>
+            <p className="menu-page-subtitle">
+              16 World Cuisines • 900+ Vegetarian Delicacies • Jain Options Available
+            </p>
           </div>
+        </div>
 
-          <div className={styles.categoryList}>
-            {isSearching ? (
-              groupedSearchResults.length === 0 ? (
-                <p className={styles.noResults}>No items found</p>
+        <div className="search-bar-container">
+          <div className="container">
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Search menu items..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="menu-layout">
+          <div className="container">
+            <nav className="menu-sidebar">
+              <h3>Cuisines</h3>
+              <ul>
+                {menuData.map((cuisine) => (
+                  <li key={cuisine.id}>
+                    <a
+                      href={`#${cuisine.id}`}
+                      className={activeCuisine === cuisine.id ? 'active' : ''}
+                      onClick={(e) => handleCuisineClick(e, cuisine.id)}
+                    >
+                      {cuisine.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className="menu-content">
+              {filteredMenuData.length === 0 ? (
+                <div className="no-results">
+                  <p>No items found</p>
+                </div>
               ) : (
-                groupedSearchResults.map((group) => (
-                  <section key={group.id} className={styles.groupSection}>
-                    <p className={styles.groupLabel}>{group.name}</p>
-                    <div className={styles.cardList}>
-                      {group.items.map((item, idx) => (
-                        <article key={`${group.id}-${idx}`} className={styles.itemCard}>
-                          <p className={styles.itemName}>{item.name}</p>
-                          <p className={styles.itemDescription}>{item.description}</p>
-                        </article>
+                filteredMenuData.map((cuisine) => (
+                  <section key={cuisine.id} id={cuisine.id} className="cuisine-section">
+                    <div className="cuisine-header">
+                      <img
+                        src={cuisine.headerImage}
+                        alt={cuisine.name}
+                        className="cuisine-header-image"
+                        loading="lazy"
+                      />
+                      <div className="cuisine-header-overlay">
+                        <h2>{cuisine.name}</h2>
+                      </div>
+                    </div>
+
+                    <div className="menu-items-grid">
+                      {cuisine.items.map((item, idx) => (
+                        <div key={idx} className="menu-item">
+                          <div className="item-info">
+                            <h4 className="item-name">
+                              {item.name}
+                              {item.isJain && (
+                                <span className="jain-badge" title="Jain Available">
+                                  J
+                                </span>
+                              )}
+                            </h4>
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </section>
                 ))
-              )
-            ) : (
-              withDescriptions.map((category) => (
-                <button
-                  key={category.id}
-                  type="button"
-                  className={styles.categoryCard}
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  <div className={styles.categoryText}>
-                    <p className={styles.categoryName}>{category.name}</p>
-                    <p className={styles.categoryCount}>{category.items.length} items</p>
-                  </div>
-                  <span className={styles.arrow}>›</span>
-                </button>
-              ))
-            )}
+              )}
+            </div>
           </div>
         </div>
-      ) : (
-        <div className={styles.screenTwo}>
-          <button
-            type="button"
-            className={styles.backButton}
-            onClick={() => setSelectedCategory(null)}
-          >
-            ← Back
-          </button>
-
-          <h2 className={styles.screenHeading}>{selectedCategory.name}</h2>
-
-          <div className={styles.cardList}>
-            {selectedCategory.items.map((item, idx) => {
-              const description = item.isJain
-                ? 'Jain option available'
-                : 'Popular vegetarian choice';
-              return (
-                <article key={`${selectedCategory.id}-${idx}`} className={styles.itemCard}>
-                  <p className={styles.itemName}>{item.name}</p>
-                  <p className={styles.itemDescription}>{description}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
