@@ -63,9 +63,9 @@ function MenuHighlights() {
               <div className="card-gradient-overlay">
                 <h3>{category.title}</h3>
                 <p className="menu-description">{category.description}</p>
-                <button className="view-details-btn">
+                <Link to="/menu" className="view-details-btn">
                   View Details →
-                </button>
+                </Link>
               </div>
             </div>
           ))}

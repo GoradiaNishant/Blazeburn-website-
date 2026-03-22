@@ -118,6 +118,10 @@
   margin-top: var(--spacing-xs);
   box-shadow: none;
   letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .view-details-btn:hover {

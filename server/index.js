@@ -20,6 +20,21 @@ app.post('/api/reservation', (req, res) => {
   });
 });
 
+app.post('/api/inquiry', (req, res) => {
+  const { name, email, phone, inquiryType, message } = req.body;
+  
+  if (!name || !email || !phone || !inquiryType || !message) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  console.log('New Inquiry received:', { name, email, phone, inquiryType, message });
+  
+  res.json({
+    success: true,
+    message: 'Inquiry processed successfully!'
+  });
+});
+
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../dist')));
