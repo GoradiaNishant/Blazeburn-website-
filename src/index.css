@@ -97,7 +97,7 @@
   --border-subtle: rgba(201, 169, 110, 0.12);
   --card-shadow: rgba(0, 0, 0, 0.3);
 
-  --nav-bg: rgba(13, 10, 8, 0.95);
+  --nav-bg: rgba(13, 10, 8, 0.4);
   --nav-border: rgba(201, 169, 110, 0.15);
 
   --btn-primary-bg: #c9a96e;
@@ -135,7 +135,7 @@
   --card-shadow: 0 8px 32px rgba(44, 36, 27, 0.08); /* Soft warm brown shadow */
 
   /* Component Specifics */
-  --nav-bg: rgba(252, 251, 247, 0.95);
+  --nav-bg: rgba(252, 251, 247, 0.85);
   --nav-border: rgba(176, 141, 85, 0.15);
 
   --btn-primary-bg: #b08d55;

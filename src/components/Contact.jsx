@@ -24,7 +24,7 @@ function Contact() {
 
     try {
       // 🚨 IMPORTANT: Google Apps Script Web App URL
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpfQN8lZFRyIIAv6FKUFUR_JB_RmdJnJqb6VewdZOoNCGhp1p9ANYKOHoZW3bmdfW9OA/exec'; 
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5VZho5g512dUl_Y98I8jkCggBPJkBYyDyRzeW38udRccF5QbYI_-wGNIjmiPaJ2bc/exec'; 
       
       const payload = {
         name: formData.name,
@@ -100,10 +100,10 @@ function Contact() {
                   <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" required />
                 </div>
                 <div className="form-group">
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your Email" required />
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your Email *" required />
                 </div>
                 <div className="form-group">
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" required />
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number *" required />
                 </div>
                 <div className="form-group">
                   <select name="inquiryType" value={formData.inquiryType} onChange={handleChange} required>
