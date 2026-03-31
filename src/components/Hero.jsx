@@ -13,13 +13,13 @@ function Hero() {
           className="hero-subtitle fade-in-up"
           style={{ animationDelay: "0.2s" }}
         >
-          Where Tradition Meets Trend
+          Ignite the Flames. Taste the World.
         </p>
         <p
           className="hero-description fade-in-up"
           style={{ animationDelay: "0.4s" }}
         >
-          Ahmedabad's Premium All-Vegetarian, Multi-Themed Food Destination
+          Ahmedabad’s Premium All-Vegetarian, Multi-Zone Food & Dining Destination
         </p>
         <div
           className="hero-buttons fade-in-up"
